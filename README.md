@@ -1,8 +1,8 @@
 Cygwin Process Killer Plugin
 ============================
 
-Provides Cygwin process killer Plugin for [Jenkins CI][1].
+Provides Cygwin process termination logic for [Jenkins][1].
 More info: [Cygwin Process Killer][2] wiki page.
 
-[1]: http://jenkins-ci.org/
-[2]: https://wiki.jenkins-ci.org/display/JENKINS/Cygwin+Process+Killer+Plugin
+[1]: https://jenkins.io/
+[2]: https://wiki.jenkins.io/display/JENKINS/Cygwin+Process+Killer+Plugin

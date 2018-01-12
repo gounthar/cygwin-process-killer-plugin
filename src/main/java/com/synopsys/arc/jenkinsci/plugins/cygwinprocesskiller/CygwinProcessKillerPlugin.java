@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2013 Oleg Nenashev <nenashev@synopsys.com>, Synopsys Inc.
+ * Copyright 2013 Oleg Nenashev, Synopsys Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +23,9 @@
  */
 package com.synopsys.arc.jenkinsci.plugins.cygwinprocesskiller;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import hudson.Plugin;
 import hudson.model.Descriptor;
-import hudson.model.Hudson;
 import hudson.util.IOUtils;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,7 +37,7 @@ import org.kohsuke.stapler.StaplerRequest;
 
 /**
  * Cygwin Process Killer plugin.
- * @author Oleg Nenashev <nenashev@synopsys.com>, Synopsys Inc.
+ * @author Oleg Nenashev
  */
 public class CygwinProcessKillerPlugin extends Plugin {
 
@@ -64,9 +64,10 @@ public class CygwinProcessKillerPlugin extends Plugin {
     public CygwinInstallation getCygwinInstallation() {
         return cygwinInstallation;
     }
-    
+
+    @SuppressFBWarnings(value = "NM_METHOD_NAMING_CONVENTION", justification = "part of old API")
     public static CygwinProcessKillerPlugin Instance() {
-        Plugin plugin = Jenkins.getInstance().getPlugin(CygwinProcessKillerPlugin.class);
+        Plugin plugin = Jenkins.getActiveInstance().getPlugin(CygwinProcessKillerPlugin.class);
         return plugin != null ? (CygwinProcessKillerPlugin)plugin : null;
     }
 
@@ -100,7 +101,7 @@ public class CygwinProcessKillerPlugin extends Plugin {
             return null;
         }
         
-        CygwinKillerInstallation.DescriptorImpl descriptor = (CygwinKillerInstallation.DescriptorImpl) Hudson.getInstance().getDescriptor(CygwinKillerInstallation.class);
+        CygwinKillerInstallation.DescriptorImpl descriptor = (CygwinKillerInstallation.DescriptorImpl) Jenkins.getActiveInstance().getDescriptor(CygwinKillerInstallation.class);
         CygwinKillerInstallation[] installations = descriptor.getInstallations();
         for (CygwinKillerInstallation inst : installations) {
             if (inst.getName().equals(cygwinInstallation.getName())) {

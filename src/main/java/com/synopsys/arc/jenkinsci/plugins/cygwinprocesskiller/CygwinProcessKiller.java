@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2013 Oleg Nenashev <nenashev@synopsys.com>, Synopsys Inc.
+ * Copyright 2013 Oleg Nenashev, Synopsys Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,12 +39,15 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import jenkins.model.Jenkins;
+import jenkins.security.SlaveToMasterCallable;
 import org.apache.commons.lang.SystemUtils;
 
 /**
  * Extension, which kills Cygwin process trees.
  * Most of the extension;s functionality will be launched on Jenkins master's side.
- * @author Oleg Nenashev <nenashev@synopsys.com>, Synopsys Inc.
+ * @author Oleg Nenashev
  */
 @Extension
 public class CygwinProcessKiller extends ProcessKiller {
@@ -84,7 +87,7 @@ public class CygwinProcessKiller extends ProcessKiller {
         }
     }
     
-    public static class KillerRemoteCall implements Callable<KillReport, CygwinKillerException> {
+    public static class KillerRemoteCall extends SlaveToMasterCallable<KillReport, CygwinKillerException> {
         private final int processPID;
        
         public KillerRemoteCall(int processPID) {
@@ -101,7 +104,7 @@ public class CygwinProcessKiller extends ProcessKiller {
             // Init variables
             TaskListener listener = new LogTaskListener(Logger.getLogger(KILLER_LOGGER_NAME), KILLER_LOGGING_LEVEL);
             String nodeName = Channel.current().getName();        
-            Node targetNode = Hudson.getInstance().getNode(nodeName);
+            Node targetNode = Jenkins.getActiveInstance().getNode(nodeName);
             CygwinKillerInstallation tool = plugin.getToolInstallation();
 
             // Run helper, which checks platform and then runs kill script

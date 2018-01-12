@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2013 Oleg Nenashev <nenashev@synopsys.com>, Synopsys Inc.
+ * Copyright 2013 Oleg Nenashev, Synopsys Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,7 @@ import org.apache.commons.io.output.ByteArrayOutputStream;
 /**
  * Class provides basic Cygwin operations.
  * This class is designed to be launched on the master only.
- * @author Oleg Nenashev <nenashev@synopsys.com>, Synopsys Inc.
+ * @author Oleg Nenashev
  */
 //TODO: Logging
 public class CygwinKillHelper {
@@ -71,8 +71,6 @@ public class CygwinKillHelper {
     
     /**
      * Checks that Cygwin is available on the host.
-     * @throws IOException
-     * @throws InterruptedException 
      */
     public boolean isCygwin() throws InterruptedException {        
         OutputStream str = new ByteArrayOutputStream();
