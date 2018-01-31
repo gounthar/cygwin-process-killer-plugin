@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2013 Oleg Nenashev <nenashev@synopsys.com>, Synopsys Inc.
+ * Copyright 2013 Oleg Nenashev, Synopsys Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,13 +26,14 @@ package com.synopsys.arc.jenkinsci.plugins.cygwinprocesskiller;
 import hudson.Extension;
 import hudson.model.Describable;
 import hudson.model.Descriptor;
-import hudson.model.Hudson;
 import java.io.Serializable;
+
+import jenkins.model.Jenkins;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
  * Provides description of the tool to be used.
- * @author Oleg Nenashev <nenashev@synopsys.com>, Synopsys Inc.
+ * @author Oleg Nenashev
  */
 public class CygwinInstallation implements Serializable, Describable<CygwinInstallation> {
     private String name;
@@ -61,7 +62,7 @@ public class CygwinInstallation implements Serializable, Describable<CygwinInsta
         }
         
         public static CygwinKillerInstallation[] getCustomToolInstallations() {
-            return Hudson.getInstance().getDescriptorByType(CygwinKillerInstallation.DescriptorImpl.class).getInstallations();      
+            return Jenkins.getActiveInstance().getDescriptorByType(CygwinKillerInstallation.DescriptorImpl.class).getInstallations();
         }
     }
 }

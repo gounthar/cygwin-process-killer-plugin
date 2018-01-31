@@ -1,3 +1,4 @@
+<?jelly escape-by-default='true'?>
 <div>
-  Plugin implements terminantion of Cygwin processes on Jenkins nodes.
+  Plugin implements termination of Cygwin processes on Jenkins nodes.
 </div>
