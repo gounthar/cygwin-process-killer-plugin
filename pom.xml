@@ -8,7 +8,7 @@
 
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>cygwin-process-killer</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.2</version>
     <name>Cygwin Process Killer</name>
     <description>Implements termination of Cygwin process trees in Jenkins jobs</description>
     <packaging>hpi</packaging>
@@ -47,7 +47,8 @@
         <connection>scm:git:ssh://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/${project.artifactId}-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
-    </scm>
+      <tag>cygwin-process-killer-0.2</tag>
+  </scm>
     
     <licenses>
         <license>
